@@ -1,14 +1,28 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const Title = Styled.h1`
-  color: red;
+import Router from './Router';
+import FileChk from '~/Utils/FileChk';
+
+const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family:'AguafinaScript';
+    src: url(${FileChk(require('~/Assets/Fonts/AguafinaScript-Regular.ttf'))});
+  }
+  body {
+    font-family: 'AguafinaScript', sans-serif;
+  }
 `;
-interface Props {}
 
+interface Props {}
 const App = ({  }: Props) => {
-  return <Title>Hello World!</Title>;
+  return (
+    <>
+      <GlobalStyles />
+      <Router />
+    </>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));
